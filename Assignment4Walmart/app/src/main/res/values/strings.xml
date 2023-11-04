@@ -3,4 +3,5 @@
     <string name="android_version_hint">Enter Android Version</string>
     <string name="android_code_hint">Enter Android Code Name</string>
     <string name="add">ADD</string>
+    <string name="welcome">Welcome, %1$s</string>
 </resources>

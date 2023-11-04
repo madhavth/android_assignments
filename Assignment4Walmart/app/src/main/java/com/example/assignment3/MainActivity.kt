@@ -15,6 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initUsers()
         initViews()
+
+        //todo: remove
+        binding.etEmail.setText("User1@gmail.com")
+        binding.etPass.setText("User1")
     }
 
     private fun initViews() {
@@ -27,8 +31,10 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (users.any { user -> user.userName == username && user.password == password }) {
+            if (users.any { user -> user.userName.lowercase() == username.lowercase() && user.password == password }) {
                 showToast("Login success for $username")
+                startActivity(ShoppingActivity.createIntent(this, username))
+                finish()
             } else {
                 showToast("Invalid credentials, please try again.")
                 binding.etPass.text?.clear()
