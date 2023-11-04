@@ -1,6 +1,5 @@
 package com.example.assignment3
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -31,15 +30,15 @@ class ShoppingActivity : AppCompatActivity() {
 
     private fun bindViews() {
         binding.tvWelcome.text = getString(R.string.welcome, userName)
-        binding.gvShopCategories.adapter = GridViewAdapter(this, getShoppingItems())
+        binding.gvShopCategories.adapter = ShoppingGridViewAdapter(this, getShoppingItems())
     }
 
     private fun getShoppingItems(): List<ShoppingGridItem> {
         return listOf(
-            ShoppingGridItem("Electronics", R.drawable.ic_launcher_background),
-            ShoppingGridItem("Clothing", R.drawable.ic_launcher_background),
-            ShoppingGridItem("Beauty", R.drawable.ic_launcher_background),
-            ShoppingGridItem("Food", R.drawable.ic_launcher_background),
+            ShoppingGridItem("Electronics", R.drawable.electronics),
+            ShoppingGridItem("Clothing", R.drawable.clothing),
+            ShoppingGridItem("Beauty", R.drawable.beauty),
+            ShoppingGridItem("Food", R.drawable.food),
         )
     }
 

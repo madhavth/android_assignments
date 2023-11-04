@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (users.any { user -> user.userName.lowercase() == username.lowercase() && user.password == password }) {
-                showToast("Login success for $username")
                 startActivity(ShoppingActivity.createIntent(this, username))
                 finish()
             } else {
