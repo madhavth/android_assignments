@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TableLayoutTest - Assignment 3</string>
+    <string name="app_name">Intent - Assignment 4</string>
     <string name="android_version_hint">Enter Android Version</string>
     <string name="android_code_hint">Enter Android Code Name</string>
     <string name="add">ADD</string>
