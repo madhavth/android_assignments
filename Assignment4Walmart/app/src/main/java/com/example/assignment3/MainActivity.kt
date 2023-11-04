@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         binding.tvForgotPassword.setOnClickListener {
             clickedForgotPassword()
         }
+        binding.btnCreateAccount.setOnClickListener {
+            startActivityForResult(CreateAccountActivity.createIntent(this), CreateAccountActivity.REQUEST_CODE)
+        }
     }
 
     private fun clickedForgotPassword() {
@@ -79,6 +82,22 @@ class MainActivity : AppCompatActivity() {
         } else {
             showToast("Invalid credentials, please try again.")
             binding.etPass.text?.clear()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == RESULT_OK && requestCode == CreateAccountActivity.REQUEST_CODE) {
+            try {
+                val newUser = data?.getParcelableExtra<User>(CreateAccountActivity.REGISTERED_USER)
+                if(newUser != null) {
+                    users.add(newUser)
+                    showToast("Account created successfully")
+                }
+            }
+            catch (e: Exception) {
+                showToast("Error creating account, please try again.")
+            }
         }
     }
 }
