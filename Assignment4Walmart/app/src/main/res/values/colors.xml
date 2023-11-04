@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pink">#ff4081</color>
+    <color name="divider">#000000</color>
+    <color name="blue">#0980d7</color>
+    <color name="divider_color">#f3f3f3</color>
+    <color name="tv_dont_have_account">#6f6b6f</color>
+</resources>
