@@ -1,7 +1,8 @@
 package com.example.assignment3
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
 import com.example.assignment3.databinding.ActivityMainBinding
 
@@ -23,27 +24,61 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         binding.btnSignIn.setOnClickListener {
-            val username = binding.etEmail.text.toString()
-            val password = binding.etPass.text.toString()
-
-            if (username.isBlank() || password.isBlank()) {
-                showToast("Please fill in all fields")
-                return@setOnClickListener
-            }
-
-            if (users.any { user -> user.userName.lowercase() == username.lowercase() && user.password == password }) {
-                startActivity(ShoppingActivity.createIntent(this, username))
-                finish()
-            } else {
-                showToast("Invalid credentials, please try again.")
-                binding.etPass.text?.clear()
-            }
+            signInClicked()
         }
+        binding.tvForgotPassword.setOnClickListener {
+            clickedForgotPassword()
+        }
+    }
+
+    private fun clickedForgotPassword() {
+        val password = getPasswordForUserName(binding.etEmail.text)
+
+        if(password == null) {
+            showToast("No user found with this email")
+            return
+        }
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("${binding.etEmail.text}"))
+        intent.putExtra(
+            Intent.EXTRA_SUBJECT,
+            "Password Recovery: $password"
+        )
+        startActivity(intent)
+    }
+
+    private fun getPasswordForUserName(text: Editable?): String? {
+
+     val foundUser = users.firstOrNull { user ->
+            user.userName.lowercase() == text.toString().lowercase()
+        }
+
+        return foundUser?.password
     }
 
     private fun initUsers() {
         for (i in 1..5) {
             users.add(User("User$i", "User$i", "User$i@gmail.com", "User$i"))
+        }
+    }
+
+    private fun signInClicked() {
+        val username = binding.etEmail.text.toString()
+        val password = binding.etPass.text.toString()
+
+        if (username.isBlank() || password.isBlank()) {
+            showToast("Please fill in all fields")
+            return
+        }
+
+        if (users.any { user -> user.userName.lowercase() == username.lowercase() && user.password == password }) {
+            startActivity(ShoppingActivity.createIntent(this, username))
+            finish()
+        } else {
+            showToast("Invalid credentials, please try again.")
+            binding.etPass.text?.clear()
         }
     }
 }
