@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity() {
                 listOf(0),
                 listOf(
                     "val is immutable and var is mutable",
-                    "val is mutable and var is immutable"
+                    "val is mutable and var is immutable",
+                    "val is not nullable and var is nullable",
+                    "val is nullable and var is not nullable"
                 ),
                 QuestionType.RADIO
             )
@@ -76,11 +78,22 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 QuestionType.RADIO -> {
-                    userAnswers[question.id] = mutableListOf(checkedId)
+                    val questionId = getQuestionId(checkedId)
+                    userAnswers[question.id] = mutableListOf(questionId)
                 }
             }
         }
         binding.lvQuestions.adapter = questionsAdapter
+    }
+
+    private fun getQuestionId(checkedId: Int): Int {
+        return when (checkedId) {
+            R.id.rb_option1 -> 0
+            R.id.rb_option2 -> 1
+            R.id.rb_option3 -> 2
+            R.id.rb_option4 -> 3
+            else -> -1
+        }
     }
 
     private fun reset() {
@@ -99,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getPercentage(correctAnswers: Int, size: Int): String {
-        return ((correctAnswers.toDouble() / size.toDouble()) * 100).toInt().toString(0)
+        return ((correctAnswers.toDouble() / size.toDouble()) * 100).toString()
     }
 
     private fun checkAnswers(): Int {

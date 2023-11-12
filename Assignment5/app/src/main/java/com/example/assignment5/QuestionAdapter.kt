@@ -29,12 +29,20 @@ class QuestionAdapter(private val context: Context, private val questions: List<
                     radioBinding.rgOptions.setOnCheckedChangeListener { _, checkedId ->
                         checkedChangeListener(question, checkedId, true)
                     }
+                    radioBinding.rbOption1.text = question.options[0]
+                    radioBinding.rbOption2.text = question.options[1]
+                    radioBinding.rbOption3.text = question.options[2]
+                    radioBinding.rbOption4.text = question.options[3]
                 }
                 QuestionType.CHECKBOX -> {
                     val checkBinding = LayoutQuestionsCheckBinding.inflate(LayoutInflater.from(context),parent, false)
                     myConvertView = checkBinding.root
                     checkBinding.tvQuestion.text = question.question
                     addCheckChangeListeners(checkBinding,question)
+                    checkBinding.rbOption1.text = question.options[0]
+                    checkBinding.rbOption2.text = question.options[1]
+                    checkBinding.rbOption3.text = question.options[2]
+                    checkBinding.rbOption4.text = question.options[3]
                 }
             }
 
