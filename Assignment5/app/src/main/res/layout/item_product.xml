@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp">
+
+    <ImageView
+        android:id="@+id/iv_product_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="product image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/iv_product_logo"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/iv_product_image"
+        app:layout_constraintTop_toTopOf="@id/iv_product_image"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/iv_product_logo"
+        app:layout_constraintTop_toTopOf="@id/iv_product_image"
+        tools:text="Product Name" />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name"
+        tools:text="$400" />
+
+    <TextView
+        android:id="@+id/tv_product_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/iv_product_logo"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_price"
+        tools:text="ipad 11 Pro product desc" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_product_desc"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_desc"
+        tools:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/vg_add_remove"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_product_desc"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_desc"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:minWidth="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_reduce_item"
+            android:text="-"
+            />
+
+        <TextView
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:text="abc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:minWidth="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_add_item"
+            android:text="+"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
