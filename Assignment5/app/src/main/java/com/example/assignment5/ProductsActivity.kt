@@ -1,5 +1,6 @@
 package com.example.assignment5
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.assignment5.databinding.ActivityProductsBinding
@@ -18,7 +19,11 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        adapter = ProductsAdapter {
+        adapter = ProductsAdapter(productsClicked = {
+            productItem ->
+            val intent = ProductDetailScreen.createIntent(this, productItem.product)
+            startActivity(intent)
+        }) {
             productItem ->
               products = products.map {
                   if (it.product.productId == productItem.product.productId) {
@@ -27,6 +32,7 @@ class ProductsActivity : AppCompatActivity() {
                       it
                   }
               }.toMutableList()
+            adapter.submitList(products)
         }
         adapter.submitList(products)
         binding.rvProducts.adapter = adapter

@@ -1,6 +1,7 @@
 package com.example.assignment5
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.content.res.AppCompatResources
@@ -12,10 +13,10 @@ class ProductDetailScreen : AppCompatActivity() {
 
     companion object {
         const val PRODUCT = "PRODUCT"
-        fun createIntent(context: Context, product: Product) {
-            val intent = android.content.Intent(context, ProductDetailScreen::class.java)
+        fun createIntent(context: Context, product: Product): Intent {
+            val intent = Intent(context, ProductDetailScreen::class.java)
             intent.putExtra(PRODUCT, product)
-            context.startActivity(intent)
+            return intent
         }
     }
 
