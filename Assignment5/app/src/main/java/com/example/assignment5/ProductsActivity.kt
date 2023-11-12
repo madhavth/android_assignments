@@ -3,6 +3,7 @@ package com.example.assignment5
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.assignment5.databinding.ActivityProductsBinding
 
 class ProductsActivity : AppCompatActivity() {
@@ -36,6 +37,10 @@ class ProductsActivity : AppCompatActivity() {
         }
         adapter.submitList(products)
         binding.rvProducts.adapter = adapter
+        binding.btnViewCart.setOnClickListener {
+            val addedToCartItems = products.filter { it.quantity > 0 }.map { it.product.productName }
+            Toast.makeText(this, "$addedToCartItems", Toast.LENGTH_SHORT).show()
+        }
     }
     private fun initProducts() {
         products.add(
@@ -106,7 +111,7 @@ class ProductsActivity : AppCompatActivity() {
          products.add(
             ProductItem(
                 Product(
-                    5,
+                    6,
                     "Logitech Mouse",
                     "Logitech MX Master 3 Advanced Wireless Mouse",
                     99.99,
