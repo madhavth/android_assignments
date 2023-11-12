@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="12dp">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="What is the most popular programming language in 2020?"
+        android:layout_marginBottom="20dp"
+        />
+
+
+        <CheckBox
+            app:layout_constraintStart_toStartOf="@id/tv_question"
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            android:id="@+id/rb_option1"
+            tools:text="Option 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            tools:text="Option 2"
+            app:layout_constraintStart_toStartOf="@id/tv_question"
+            app:layout_constraintTop_toBottomOf="@id/rb_option1"
+            android:id="@+id/rb_option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            tools:text="Option 3"
+            app:layout_constraintStart_toStartOf="@id/tv_question"
+            app:layout_constraintTop_toBottomOf="@id/rb_option2"
+            android:id="@+id/rb_option3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            tools:text="Option 3"
+            app:layout_constraintTop_toBottomOf="@id/rb_option3"
+            app:layout_constraintStart_toStartOf="@id/tv_question"
+            android:id="@+id/rb_option4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
