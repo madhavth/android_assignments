@@ -33,6 +33,7 @@ class ProductsActivity : AppCompatActivity() {
                       it
                   }
               }.toMutableList()
+            adapter.quantityChanged
             adapter.submitList(products)
         }
         adapter.submitList(products)
